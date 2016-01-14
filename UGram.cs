@@ -48,7 +48,7 @@ namespace UyghurNgram
 		}
 		
 		//Bu birdin gGramLen ghiche uzunluqtiki gram yasaydu
-		private void PutAllGram(String jumle)
+		private void PutXGram(String jumle)
 		{
 			int i,j;
 			String[] sozler=utils.GetSozler(jumle);
@@ -116,7 +116,7 @@ namespace UyghurNgram
 				while(abzas!=null){
 					jumle=utils.GetJumle(abzas);
 					foreach(String jm in jumle){
-						PutAllGram(jm);
+						PutXGram(jm);
 					}
 					abzas = inr.ReadLine();
 				}
@@ -145,7 +145,7 @@ namespace UyghurNgram
 			return frq2-frq1;
 		}
 
-		public ArrayList GetNGramSort(int freq)
+		public ArrayList GetSorted(int freq)
 		{
 			ArrayList ret=new ArrayList();
 			mBuf.GetAll(freq,ret);
