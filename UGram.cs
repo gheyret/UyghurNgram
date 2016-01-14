@@ -86,7 +86,7 @@ namespace UyghurNgram
 		}
 		
 
-		public void MakeN(String fileName){
+		public void MakeNGram(String fileName){
 			try{
 				System.Console.WriteLine("Make Only "+ gGramLen+" gram using file "+ fileName);
 				StringBuilder buf=new StringBuilder();
@@ -106,7 +106,7 @@ namespace UyghurNgram
 		}
 		
 
-		public void ParseAndMake(String fileName){
+		public void MakeXGram(String fileName){
 			try{
 				StringBuilder buf=new StringBuilder();
 				System.Console.WriteLine(fileName);

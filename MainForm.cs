@@ -68,16 +68,29 @@ namespace UyghurNgram
 		
 		void Button1Click(object sender, EventArgs e)
 		{
-			int ngr=1;
-			if(radioButton2.Checked){
-				ngr=2;
-			}
-			else if(radioButton3.Checked){
-				ngr=3;
-			}
-			else{
+			int   ngr=1;
+			bool  xgram=false;
+			if(radio1Grm.Checked){
 				ngr=1;
+				xgram=true;
 			}
+			else if(radio12Grm.Checked){
+				ngr=2;
+				xgram=true;
+			}
+			else if(radio123Grm.Checked){
+				ngr=3;
+				xgram=true;
+			}
+			else if(radio2Grm.Checked){
+				ngr=2;
+				xgram=false;
+			}
+			else if(radio3Grm.Checked){
+				ngr=3;
+				xgram=false;
+			}
+			
 			button1.Enabled=false;
 			UGram gram=new UGram(ngr);
 			if(lstFiles.Items.Count>0){
@@ -85,11 +98,16 @@ namespace UyghurNgram
 				{
 					lstFiles.SelectedIndex=i;
 					if(lstFiles.GetItemCheckState(i)==CheckState.Checked){
-						gram.ParseAndMake(lstFiles.Items[i].ToString());
+						if(xgram==true){
+							gram.MakeXGram(lstFiles.Items[i].ToString()); // Arilash gramni yasaydu
+						}
+						else{
+							gram.MakeNGram(lstFiles.Items[i].ToString()); // Belgilengen gramnila yasaydu
+						}
 					}
 					
 				}
-				gram.Save("netije.txt",2); //tekrarliqi 2 yaki ikkidin kop bolghanlirini  
+				gram.Save("netije.txt",2); //tekrarliqi 2 yaki ikkidin kop bolghanlirini hojjetke saqlaydu 
 			}
 			gram=null;
 			button1.Enabled=true;
