@@ -107,7 +107,7 @@ namespace UyghurNgram
 					}
 					
 				}
-				gram.Save("netije.txt",2); //tekrarliqi 2 yaki ikkidin kop bolghanlirini hojjetke saqlaydu 
+				gram.Save("netije.txt",3); //tekrarliqi 2 yaki ikkidin kop bolghanlirini hojjetke saqlaydu 
 			}
 			gram=null;
 			button1.Enabled=true;
