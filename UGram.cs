@@ -81,12 +81,33 @@ namespace UyghurNgram
 				for(j=i;j<N+i;j++){
 					ngramBuf.Append(" "+sozler[j]);
 				}
-				mBuf.Add(ngramBuf.ToString());
+				mBuf.Add(ngramBuf.ToString().Trim());
 			}
 		}
 		
 
 		public void MakeNGram(String fileName){
+			try{
+				System.Console.WriteLine("Make Only "+ gGramLen+" gram using file "+ fileName);
+				StringBuilder buf=new StringBuilder();
+				String[] jumle;
+				StreamReader inr=new StreamReader(fileName,Encoding.UTF8);
+				String abzas=inr.ReadLine();
+				while(abzas!=null){
+					jumle=utils.GetJumle(abzas);
+					foreach(String jm in jumle){
+						PutNGram(jm);
+					}
+					abzas = inr.ReadLine();
+				}
+				inr.Close();
+				System.Console.WriteLine("Tamam nGram Sani =" +mBuf.Count);
+			}catch(Exception ee){
+				System.Console.WriteLine(ee.Message+ " Sani="+mBuf.Count);
+			}
+		}
+		
+		public void MakeNGramOrg(String fileName){
 			try{
 				System.Console.WriteLine("Make Only "+ gGramLen+" gram using file "+ fileName);
 				StringBuilder buf=new StringBuilder();
